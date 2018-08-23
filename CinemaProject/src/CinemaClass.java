@@ -50,13 +50,36 @@ public class CinemaClass {
 
 	}
 
+	// Création d'une méthode pour executer une requête sql select *
+
+	public static void selectAll() {
+
+		Statement st = null;
+		Connection cn = null;
+
+		// Création du statement
+
+		try {
+			st = (Statement) cn.createStatement();
+
+			String sql = "SELECT  * FROM acteur";
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		String sql = "SELECT  * FROM acteur";
+
+	}
+
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Connection cn = null;
 		Statement st = null;
 
 		cn = openConnection(st);
-		closeConnection(cn,st);
+		closeConnection(cn, st);
 
 	}
 

@@ -96,10 +96,16 @@ public class CinemaClass {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+
 		Connection cn = null;
 		Statement st = null;
 
 		cn = openConnection(st);
+		
+
+		st = selectAll(cn);
+		
+		
 		closeConnection(cn, st);
 
 	}

@@ -1,4 +1,5 @@
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -63,6 +64,11 @@ public class CinemaClass {
 			st = (Statement) cn.createStatement();
 
 			String sql = "SELECT  * FROM acteur";
+
+			// Classe ResultSet qui a une méthode executeQuery cette méthode retourne un
+			// objet de type ResultSet et execute le Statement
+
+			ResultSet result = (ResultSet) st.executeQuery(sql);
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

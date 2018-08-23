@@ -53,22 +53,36 @@ public class CinemaClass {
 
 	// Création d'une méthode pour executer une requête sql select *
 
-	public static void selectAll() {
+	public static Statement selectAll(Connection cn) {
 
 		Statement st = null;
-		Connection cn = null;
 
 		// Création du statement
 
 		try {
 			st = (Statement) cn.createStatement();
 
-			String sql = "SELECT  * FROM acteur";
+			String sql = "SELECT  * FROM personne";
 
 			// Classe ResultSet qui a une méthode executeQuery cette méthode retourne un
 			// objet de type ResultSet et execute le Statement
 
 			ResultSet result = (ResultSet) st.executeQuery(sql);
+
+			// On fait une boucle while pour afficher le result
+			// Tant que result a un resultat, la boucle continue
+
+			// Variables qui vont nous servir à récupérer les valeurs
+
+			String prenom;
+
+			while (result.next()) {
+
+				// L'argument c'est le nom de la colonne de notre table entre double quotes.
+
+				prenom = result.getString("prenom");
+				System.out.println("La personne est : " + prenom);
+			}
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -76,6 +90,7 @@ public class CinemaClass {
 		}
 
 		String sql = "SELECT  * FROM acteur";
+		return st;
 
 	}
 

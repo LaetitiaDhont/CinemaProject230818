@@ -6,9 +6,9 @@ import com.mysql.jdbc.Connection;
 
 public class CinemaClass {
 
-	// Création d'une méthode pour ouvrir la connection 
+	// Création d'une méthode pour ouvrir la connection
 	public static Connection openConnection(Statement st) {
-		
+
 		Connection cn = null;
 
 		String url = "jdbc:mysql://localhost/cinema?useSSL=false";
@@ -36,11 +36,27 @@ public class CinemaClass {
 
 	}
 
+	// Création de la méthode pour fermer la connexion & le statement
+
+	public static void closeConnection(Connection cn, Statement st) {
+
+		try {
+			cn.close();
+			st.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		
+		Connection cn = null;
 		Statement st = null;
-		openConnection(st);
+
+		cn = openConnection(st);
+		closeConnection(cn,st);
 
 	}
 

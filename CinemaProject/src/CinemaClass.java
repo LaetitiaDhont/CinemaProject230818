@@ -11,7 +11,7 @@ public class CinemaClass {
 		
 		Connection cn = null;
 
-		String url = "jdbc:mysql://localhost/cinema";
+		String url = "jdbc:mysql://localhost/cinema?useSSL=false";
 		String user = "root";
 		String pwd = "rootpwd";
 

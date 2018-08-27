@@ -14,7 +14,7 @@ public class CinemaClass {
 
 		String url = "jdbc:mysql://localhost/cinema?useSSL=false";
 		String user = "root";
-		String pwd = "rootpwd";
+		String pwd = "Artichaut07";
 
 		// Récupération du driver
 		try {
@@ -62,26 +62,40 @@ public class CinemaClass {
 		try {
 			st = (Statement) cn.createStatement();
 
-			String sql = "SELECT  * FROM personne";
+			String sql = "SELECT titre FROM film;";
+			String sql2 = "SELECT * FROM film\r\n" + 
+					"WHERE film.longueur > 180";
 
 			// Classe ResultSet qui a une méthode executeQuery cette méthode retourne un
 			// objet de type ResultSet et execute le Statement
 
 			ResultSet result = (ResultSet) st.executeQuery(sql);
+			
 
 			// On fait une boucle while pour afficher le result
 			// Tant que result a un resultat, la boucle continue
 
 			// Variables qui vont nous servir à récupérer les valeurs
 
-			String prenom;
+			String titre;
 
 			while (result.next()) {
 
 				// L'argument c'est le nom de la colonne de notre table entre double quotes.
 
-				prenom = result.getString("prenom");
-				System.out.println("La personne est : " + prenom);
+				titre = result.getString("titre");
+				System.out.println("Les titres du film sont : " + titre);
+			}
+			
+			ResultSet result2 = (ResultSet) st.executeQuery(sql2);
+
+			int longueur;
+			while (result2.next()) {
+
+				// L'argument c'est le nom de la colonne de notre table entre double quotes.
+
+				longueur = result2.getInt("longueur");
+				System.out.println("Les titres du film  avec une longueur dépassant 180 sont : " + longueur);
 			}
 
 		} catch (SQLException e) {
@@ -89,7 +103,6 @@ public class CinemaClass {
 			e.printStackTrace();
 		}
 
-		String sql = "SELECT  * FROM acteur";
 		return st;
 
 	}
